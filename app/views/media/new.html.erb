@@ -1,0 +1,24 @@
+<header class='top-page-heder'>
+  <%= link_to '香川通信', root_path, class:"kagawa-icon" %>
+</header>
+
+<%= form_with(model: @medium, local: true) do |f| %>
+ <div class="media-upload">
+  <div class="img-upload">
+     <div class="weight-bold-text">
+      投稿画像
+       <span class="indispensable">必須</span>
+     </div>
+       <div class="click-upload">
+         <p>
+           クリックしてファイルをアップロード
+         </p>
+         <%= f.file_field :image, id:"title-image" %>
+       </div>
+   </div>
+   <%= f.text_area :title, placeholder: "title" %>
+   <%= f.text_area :text, placeholder: "text"%>
+   <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+   <%= f.submit "SEND" %>
+  </div>
+<% end %>
